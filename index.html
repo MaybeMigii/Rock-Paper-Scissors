@@ -23,6 +23,7 @@
             function startRound (playerSelection, computerSelection) {
                 playerSelection = playerSelection.toLowerCase();
 
+            // Compares what the player chose with what the computer randomly picked
                 if(playerSelection == 'rock') {
                     if (computerSelection == 'scissors') {
                         return 'You win! Rock beats scissors';
@@ -69,10 +70,12 @@
                 let tie;
                 let lose;
 
+                // Plays 5 rounds of rock, paper, and scissors
                 for(let i = 0; i < 5; i++) {
                     playerSelection = prompt('Rock, paper, or scissors?');
                     computerChoice = getComputerChoice();
                     text = startRound(playerSelection, computerChoice);
+                    
                     win = text.search('win');
                     tie = text.search('tie');
                     lose = text.search('lose');
