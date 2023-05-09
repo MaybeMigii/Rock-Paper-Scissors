@@ -39,7 +39,7 @@
                         return 'You lose! Scissors beats paper';
                     }
                     else if (computerSelection == 'paper') {
-                        return 'It\'s a tie you both picked paper';
+                        return 'It\'s a tie! You both picked paper';
                     }
                     else if (computerSelection == 'rock') {
                         return 'You win! Paper beats rock';
@@ -62,26 +62,39 @@
                 let computerChoice;
                 let userScore = 0;
                 let computerScore = 0;
+                let tieScore = 0;
                 let text;
-                let index;
+
+                let win;
+                let tie;
+                let lose;
 
                 for(let i = 0; i < 5; i++) {
                     playerSelection = prompt('Rock, paper, or scissors?');
                     computerChoice = getComputerChoice();
                     text = startRound(playerSelection, computerChoice);
-                    index = text.search('win');
-                    if(index >= 0) {
+                    win = text.search('win');
+                    tie = text.search('tie');
+                    lose = text.search('lose');
+
+                    if(win >= 0) {
                         userScore++;
+                        console.log(text);
                     }
-                    else {
+                    else if (lose >= 0) {
                         computerScore++;
+                        console.log(text);
+                    }
+                    else if (tie >= 0) {
+                        tieScore++;
+                        console.log(text);
                     }
                 }
                 if(userScore > computerScore) {
-                    console.log('You won! You\'re score is ' + userScore + '/' + 5);
+                    console.log('You won against the computer! You won ' + userScore + ' times, tied ' + tieScore + ' times, and lost ' + computerScore + ' times.');
                 }
-                else {
-                    console.log('You lost! You\'re score is ' + userScore + '/' + 5);
+                else if (userScore < computerScore) {
+                    console.log('You lost against the computer! You won ' + userScore + ' times, tied ' + tieScore + ' times, and lost ' + computerScore + ' times.');
                 }
             }
 
