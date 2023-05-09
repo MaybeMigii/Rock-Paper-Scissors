@@ -19,6 +19,74 @@
                     return 'scissors';
                 }
             }
+            
+            function startRound (playerSelection, computerSelection) {
+                playerSelection = playerSelection.toLowerCase();
+
+                if(playerSelection == 'rock') {
+                    if (computerSelection == 'scissors') {
+                        return 'You win! Rock beats scissors';
+                    }
+                    else if (computerSelection == 'paper') {
+                        return 'You lose! Paper beats rock';
+                    }
+                    else if (computerSelection == 'rock') {
+                        return 'It\'s a tie! You both picked rock';
+                    }
+                }
+                if(playerSelection == 'paper') {
+                    if(computerSelection == 'scissors') {
+                        return 'You lose! Scissors beats paper';
+                    }
+                    else if (computerSelection == 'paper') {
+                        return 'It\'s a tie you both picked paper';
+                    }
+                    else if (computerSelection == 'rock') {
+                        return 'You win! Paper beats rock';
+                    }
+                }
+                if (playerSelection == 'scissors') {
+                    if (computerSelection == 'scissors') {
+                        return 'It\'s a tie! You both picked scissors';
+                    }
+                    else if (computerSelection == 'paper') {
+                        return 'You win! Scissors beat paper';
+                    }
+                    else if (computerSelection == 'rock') {
+                        return 'You lose! Rock beats scissors';
+                    }
+                }
+            }
+            function game() {
+                let playerSelection;
+                let computerChoice;
+                let userScore = 0;
+                let computerScore = 0;
+                let text;
+                let index;
+
+                for(let i = 0; i < 5; i++) {
+                    playerSelection = prompt('Rock, paper, or scissors?');
+                    computerChoice = getComputerChoice();
+                    text = startRound(playerSelection, computerChoice);
+                    index = text.search('win');
+                    if(index >= 0) {
+                        userScore++;
+                    }
+                    else {
+                        computerScore++;
+                    }
+                }
+                if(userScore > computerScore) {
+                    console.log('You won! You\'re score is ' + userScore + '/' + 5);
+                }
+                else {
+                    console.log('You lost! You\'re score is ' + userScore + '/' + 5);
+                }
+            }
+
+            game();
+
 
         </script>
     </body>
