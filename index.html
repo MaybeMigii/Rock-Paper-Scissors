@@ -8,7 +8,7 @@
     <body>
         <script>
             function getComputerChoice() {
-                let randNum = math.random() * 4;
+                let randNum = Math.floor(Math.random() * 3) + 1;
                 if(randNum == 1) {
                     return 'rock';
                 }
@@ -19,6 +19,7 @@
                     return 'scissors';
                 }
             }
+
         </script>
     </body>
 </html>
